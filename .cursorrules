@@ -1,0 +1,26 @@
+# EzFlutter V2 — Cursor Rules
+
+You are working on EzFlutter V2, a production-ready Flutter boilerplate.
+
+## Architecture
+- lib/core/ = Framework layer (DO NOT modify unless asked)
+- lib/app/ = Application layer (this is where you work)
+
+## Patterns
+- Pages: @RoutePage() + ConsumerWidget in lib/app/pages/
+- Models: @freezed + abstract class in lib/app/models/
+- Services: @injectable in lib/app/services/
+- Providers: @riverpod in lib/app/providers/
+- Errors: Return Result<T>, never throw
+
+## After adding codegen files
+Run: dart run build_runner build --delete-conflicting-outputs
+
+## State Management
+Riverpod 3.x with code generation. Use ref.watch() in widgets.
+
+## DI
+get_it + injectable. Access via getIt<Service>().
+
+## Navigation
+auto_route. Annotate pages with @RoutePage(). Add routes in lib/core/router/app_router.dart.
