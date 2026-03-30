@@ -1,28 +1,34 @@
 # Service Template
 
+Services extend `EzService` which provides `guard()` for automatic Result wrapping.
+
 ```dart
 import 'package:injectable/injectable.dart';
-import 'package:ezflutter/core/error/app_exception.dart';
 import 'package:ezflutter/core/error/result.dart';
-import 'package:ezflutter/core/logging/log.dart';
+import 'package:ezflutter/core/ez/ez_service.dart';
 
 @injectable
-class {Name}Service {
-  Future<Result<{ReturnType}>> {methodName}() async {
-    try {
-      // Implementation here
-      return const Result.success(data);
-    } catch (e, s) {
-      Log.error('{Name}Service.{methodName} failed', error: e, stackTrace: s);
-      return Result.failure(ServerException(e.toString()));
-    }
-  }
+class {Name}Service extends EzService {
+  // guard() auto-wraps in Result with try/catch + logging
+  Future<Result<{Type}>> fetchData() => guard(() async {
+    // Your logic here — just return the data, no try/catch needed
+    return data;
+  });
+
+  Future<Result<void>> saveData({Type} data) => guard(() async {
+    // Save logic
+  });
 }
 ```
 
 ## Rules
 - File: `lib/app/services/{name}_service.dart`
+- Always extend `EzService` (provides guard())
 - Always use `@injectable` annotation
-- Always return `Result<T>` for operations that can fail
-- Never throw exceptions — return `Result.failure()`
+- Use `guard()` instead of manual try/catch — it handles Result wrapping, logging, and error mapping
 - Access via `getIt<{Name}Service>()`
+
+## CLI
+```bash
+dart run tools/create_service.dart --name "Payment"
+```

@@ -4,23 +4,27 @@ You are working on EzFlutter V2, a production-ready Flutter boilerplate.
 
 ## Architecture
 - lib/core/ = Framework layer (DO NOT modify unless asked)
+- lib/core/ez/ = Ez* declarative page system
 - lib/app/ = Application layer (this is where you work)
 
+## Ez* System (ALWAYS prefer these over raw Flutter)
+- List pages: extend `EzListPage<T>` (auto loading/error/empty/refresh)
+- Detail pages: extend `EzDetailPage<T>` (renders from EzField definitions)
+- Form pages: extend `EzFormPage` (auto field rendering + validation)
+- Settings pages: extend `EzSettingsPage` (declarative sections)
+- Fields: use `EzField.text()`, `.email()`, `.password()`, `.currency()`, `.select()`, `.toggle()`, `.date()`
+- List items: use `EzTile(title:, subtitle:)`
+- Services: extend `EzService`, use `guard()` instead of try/catch
+
 ## Patterns
-- Pages: @RoutePage() + ConsumerWidget in lib/app/pages/
 - Models: @freezed + abstract class in lib/app/models/
-- Services: @injectable in lib/app/services/
+- Services: @injectable + extends EzService in lib/app/services/
 - Providers: @riverpod in lib/app/providers/
-- Errors: Return Result<T>, never throw
+- Errors: Return Result<T>, never throw. Use guard() in EzService.
 
 ## After adding codegen files
 Run: dart run build_runner build --delete-conflicting-outputs
 
-## State Management
-Riverpod 3.x with code generation. Use ref.watch() in widgets.
-
-## DI
-get_it + injectable. Access via getIt<Service>().
-
-## Navigation
-auto_route. Annotate pages with @RoutePage(). Add routes in lib/core/router/app_router.dart.
+## CLI Tools
+- `dart run tools/create_page.dart --name "X" --type list|form|settings|simple`
+- `dart run tools/create_service.dart --name "X"`
