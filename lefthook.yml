@@ -1,0 +1,20 @@
+# Lefthook configuration for EzFlutter V2
+# Install: dart pub global activate lefthook
+# Setup: lefthook install
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.dart"
+      run: dart format --set-exit-if-changed {staged_files}
+      stage_fixed: true
+
+    analyze:
+      glob: "*.dart"
+      run: flutter analyze --no-fatal-infos
+
+pre-push:
+  commands:
+    test:
+      run: flutter test

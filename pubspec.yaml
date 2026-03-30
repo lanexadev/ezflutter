@@ -67,6 +67,10 @@ dev_dependencies:
   # Testing
   mocktail: any
 
+  # Assets
+  flutter_native_splash: any
+  flutter_launcher_icons: any
+
 flutter:
   uses-material-design: true
 

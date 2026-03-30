@@ -1,0 +1,11 @@
+# App identifiers for Fastlane
+# Update these with your actual values
+
+# Android
+json_key_file("fastlane/play-store-key.json") # Path to Play Store service account JSON
+package_name("com.lanexadev.ezflutter")
+
+# iOS
+# app_identifier("com.lanexadev.ezflutter")
+# apple_id("your-apple-id@email.com")
+# team_id("YOUR_TEAM_ID")
