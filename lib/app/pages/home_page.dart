@@ -74,6 +74,17 @@ class HomePage extends ConsumerWidget {
                     child: const Text('Login'),
                   ),
                 AuthLoading() => const CircularProgressIndicator(),
+                AuthError(:final message) => Column(
+                    children: [
+                      Text(message, style: TextStyle(color: theme.colorScheme.error)),
+                      const SizedBox(height: 12),
+                      FilledButton(
+                        onPressed: () =>
+                            context.router.push(const LoginRoute()),
+                        child: const Text('Try Again'),
+                      ),
+                    ],
+                  ),
               },
             ],
           ),

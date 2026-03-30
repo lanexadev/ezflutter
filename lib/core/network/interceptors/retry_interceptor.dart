@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
 import 'package:ezflutter/core/logging/log.dart';
+import 'package:injectable/injectable.dart';
 
 /// Automatically retries failed requests on network errors.
 @singleton
@@ -13,26 +13,38 @@ class RetryInterceptor extends Interceptor {
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
-    final shouldRetry = _isRetryable(err);
-    final retryCount = err.requestOptions.extra['retryCount'] as int? ?? 0;
-
-    if (shouldRetry && retryCount < _maxRetries) {
-      Log.debug('Retrying request (${retryCount + 1}/$_maxRetries)...');
-      await Future<void>.delayed(_retryDelay * (retryCount + 1));
-
-      err.requestOptions.extra['retryCount'] = retryCount + 1;
-
-      try {
-        final response = await Dio().fetch<dynamic>(err.requestOptions);
-        handler.resolve(response);
-        return;
-      } on DioException catch (e) {
-        handler.reject(e);
-        return;
-      }
+    if (!_isRetryable(err)) {
+      handler.next(err);
+      return;
     }
 
-    handler.next(err);
+    final retryCount = err.requestOptions.extra['retryCount'] as int? ?? 0;
+    if (retryCount >= _maxRetries) {
+      handler.next(err);
+      return;
+    }
+
+    Log.debug('Retrying request (${retryCount + 1}/$_maxRetries)...');
+    await Future<void>.delayed(_retryDelay * (retryCount + 1));
+
+    err.requestOptions.extra['retryCount'] = retryCount + 1;
+
+    try {
+      // Use a fresh Dio with same base options but no interceptors
+      // to avoid infinite retry loops.
+      final retryDio = Dio(
+        BaseOptions(
+          baseUrl: err.requestOptions.baseUrl,
+          connectTimeout: err.requestOptions.connectTimeout,
+          receiveTimeout: err.requestOptions.receiveTimeout,
+          headers: err.requestOptions.headers,
+        ),
+      );
+      final response = await retryDio.fetch<dynamic>(err.requestOptions);
+      handler.resolve(response);
+    } on DioException catch (e) {
+      handler.reject(e);
+    }
   }
 
   bool _isRetryable(DioException err) {

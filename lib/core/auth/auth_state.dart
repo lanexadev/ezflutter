@@ -8,4 +8,5 @@ sealed class AuthState with _$AuthState {
   const factory AuthState.authenticated(User user) = Authenticated;
   const factory AuthState.unauthenticated() = Unauthenticated;
   const factory AuthState.loading() = AuthLoading;
+  const factory AuthState.error(String message) = AuthError;
 }

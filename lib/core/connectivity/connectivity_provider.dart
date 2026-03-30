@@ -9,11 +9,12 @@ part 'connectivity_provider.g.dart';
 /// ```dart
 /// final isOnline = ref.watch(connectivityProvider);
 /// ```
-@riverpod
+@Riverpod(keepAlive: true)
 Stream<bool> connectivity(Ref ref) {
-  return Connectivity().onConnectivityChanged.map(
-        (results) => results.any(
-          (r) => r != ConnectivityResult.none,
-        ),
-      );
+  final connectivity = Connectivity();
+  return connectivity.onConnectivityChanged.map(
+    (results) => results.any(
+      (r) => r != ConnectivityResult.none,
+    ),
+  );
 }

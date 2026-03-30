@@ -1,8 +1,8 @@
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:ezflutter/core/auth/auth_state.dart';
 import 'package:ezflutter/core/auth/auth_service.dart';
+import 'package:ezflutter/core/auth/auth_state.dart';
 import 'package:ezflutter/core/di/injection.dart';
 import 'package:ezflutter/core/models/user.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_provider.g.dart';
 
@@ -17,10 +17,14 @@ class Auth extends _$Auth {
   }
 
   Future<void> _checkAuthStatus() async {
-    final user = await _authService.getCurrentUser();
-    if (user != null) {
-      state = AuthState.authenticated(user);
-    } else {
+    try {
+      final user = await _authService.getCurrentUser();
+      if (user != null) {
+        state = AuthState.authenticated(user);
+      } else {
+        state = const AuthState.unauthenticated();
+      }
+    } catch (e) {
       state = const AuthState.unauthenticated();
     }
   }
@@ -30,12 +34,16 @@ class Auth extends _$Auth {
     final result = await _authService.login(email, password);
     result.when(
       success: (user) => state = AuthState.authenticated(user),
-      failure: (_) => state = const AuthState.unauthenticated(),
+      failure: (error) => state = AuthState.error(error.message),
     );
   }
 
   Future<void> logout() async {
-    await _authService.logout();
+    try {
+      await _authService.logout();
+    } catch (_) {
+      // Best-effort logout
+    }
     state = const AuthState.unauthenticated();
   }
 }

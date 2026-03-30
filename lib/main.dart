@@ -14,12 +14,14 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
     ErrorHandler.init();
 
-    // Initialize DI
+    // Register SharedPreferences BEFORE DI (services depend on it)
+    final prefs = await SharedPreferences.getInstance();
+    getIt.registerSingleton<SharedPreferences>(prefs);
+
+    // Initialize DI (injectable registers all services)
     await configureDependencies();
 
-    // Initialize settings
-    final prefs = await SharedPreferences.getInstance();
-    getIt.registerSingleton(prefs);
+    // Initialize settings convenience accessor
     Settings.init(getIt<SettingsService>());
 
     // Lifecycle observer
@@ -33,6 +35,8 @@ class EzFlutterApp extends ConsumerWidget {
   const EzFlutterApp({super.key});
 
   static final _router = AppRouter();
+  static final _lightTheme = AppTheme.light(AppConfig.seedColor);
+  static final _darkTheme = AppTheme.dark(AppConfig.seedColor);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,8 +44,8 @@ class EzFlutterApp extends ConsumerWidget {
 
     return MaterialApp.router(
       title: AppConfig.appName,
-      theme: AppTheme.light(AppConfig.seedColor),
-      darkTheme: AppTheme.dark(AppConfig.seedColor),
+      theme: _lightTheme,
+      darkTheme: _darkTheme,
       themeMode: themeMode,
       routerConfig: _router.config(),
       debugShowCheckedModeBanner: false,

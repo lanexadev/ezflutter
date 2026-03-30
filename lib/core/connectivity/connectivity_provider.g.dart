@@ -40,7 +40,7 @@ final class ConnectivityProvider
         argument: null,
         retry: null,
         name: r'connectivityProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -59,4 +59,4 @@ final class ConnectivityProvider
   }
 }
 
-String _$connectivityHash() => r'00f46e4b8fca4a8abfb97cf8f4cc436ee2fcd3cc';
+String _$connectivityHash() => r'e055c6002c5123615795344116d225769257fab3';
