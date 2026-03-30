@@ -1,0 +1,40 @@
+{
+  "app": {
+    "name": "EzFlutter"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Annuler",
+    "error": "Erreur",
+    "retry": "Réessayer",
+    "loading": "Chargement...",
+    "noInternet": "Pas de connexion internet",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier"
+  },
+  "auth": {
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "email": "Email",
+    "password": "Mot de passe",
+    "loginButton": "Se connecter",
+    "logoutButton": "Se déconnecter",
+    "loginSuccess": "Bon retour !",
+    "loginError": "Identifiants invalides",
+    "loggedOut": "Vous avez été déconnecté"
+  },
+  "home": {
+    "title": "Accueil",
+    "welcome": "Bienvenue sur EzFlutter !",
+    "greeting": "Bonjour, {name} !"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "theme": "Thème",
+    "language": "Langue",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "themeSystem": "Système"
+  }
+}

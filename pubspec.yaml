@@ -1,0 +1,75 @@
+name: ezflutter
+description: "EzFlutter V2 — Production-ready Flutter boilerplate with modular architecture."
+publish_to: 'none'
+version: 2.0.0+1
+
+environment:
+  sdk: ^3.11.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI
+  cupertino_icons: ^1.0.8
+  flex_color_scheme: ^8.4.0
+
+  # State Management
+  flutter_riverpod: ^3.3.1
+  riverpod_annotation: any
+
+  # Routing
+  auto_route: ^11.1.0
+
+  # Dependency Injection
+  get_it: any
+  injectable: any
+
+  # Networking
+  dio: ^5.9.2
+  retrofit: any
+
+  # Models
+  freezed_annotation: ^3.1.0
+  json_annotation: any
+
+  # Storage
+  shared_preferences: any
+  flutter_secure_storage: ^10.0.0
+
+  # Connectivity
+  connectivity_plus: ^7.1.0
+
+  # i18n
+  slang: any
+  slang_flutter: any
+
+  # Utils
+  logger: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linting
+  very_good_analysis: any
+
+  # Code Generation
+  build_runner: any
+  freezed: any
+  json_serializable: any
+  riverpod_generator: any
+  auto_route_generator: any
+  injectable_generator: any
+  retrofit_generator: any
+  # slang: run `dart run slang` separately (not via build_runner)
+
+  # Testing
+  mocktail: any
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/locales/
+    - assets/images/
