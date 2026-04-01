@@ -1,0 +1,85 @@
+{
+  "app": {
+    "name": "EzShop"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "error": "Error",
+    "retry": "Retry",
+    "loading": "Loading...",
+    "noInternet": "No internet connection",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search..."
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Sign In",
+    "logoutButton": "Sign Out",
+    "loginSuccess": "Welcome back!",
+    "loginError": "Invalid credentials",
+    "loggedOut": "You have been logged out"
+  },
+  "home": {
+    "title": "EzShop",
+    "welcome": "Welcome to EzShop!",
+    "welcomeBack": "Welcome back, {name}!",
+    "productsAvailable": "{count} products available",
+    "browseAll": "Browse All",
+    "addProduct": "Add Product",
+    "featured": "Featured Products",
+    "signInPrompt": "Sign in to manage products"
+  },
+  "products": {
+    "title": "Products",
+    "empty": "No products yet. Add your first!",
+    "inStock": "In Stock",
+    "soldOut": "Sold Out",
+    "addToCart": "Added to cart",
+    "details": "Product Details",
+    "name": "Product Name",
+    "description": "Description",
+    "price": "Price",
+    "category": "Category",
+    "imageUrl": "Image URL",
+    "addedOn": "Added On"
+  },
+  "addProduct": {
+    "title": "Add Product",
+    "submit": "Add Product",
+    "descriptionHint": "Describe your product...",
+    "imageHint": "https://..."
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "total": "Total",
+    "checkout": "Checkout",
+    "checkoutDemo": "Checkout not implemented — this is a demo!"
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme",
+    "language": "Language",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "appearance": "Appearance",
+    "account": "Account",
+    "logout": "Logout"
+  },
+  "categories": {
+    "electronics": "Electronics",
+    "sports": "Sports",
+    "home": "Home",
+    "stationery": "Stationery",
+    "fashion": "Fashion",
+    "food": "Food",
+    "other": "Other"
+  }
+}

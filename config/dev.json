@@ -1,0 +1,7 @@
+{
+  "ENV": "dev",
+  "API_BASE_URL": "http://localhost:8080",
+  "APP_NAME": "EzFlutter Dev",
+  "ENABLE_LOGGING": true,
+  "ENABLE_CRASH_REPORTING": false
+}

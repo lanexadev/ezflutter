@@ -1,0 +1,49 @@
+# Fastlane configuration for EzFlutter V2
+#
+# Setup:
+#   gem install fastlane
+#   cd android && fastlane init  (for Android)
+#   cd ios && fastlane init      (for iOS)
+
+default_platform(:android)
+
+platform :android do
+  desc "Build and deploy to Play Store internal track"
+  lane :deploy do
+    # Build the app
+    sh("cd .. && flutter build appbundle --release --dart-define-from-file=config/prod.json")
+
+    # Upload to Play Store
+    upload_to_play_store(
+      track: 'internal',
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+    )
+  end
+
+  desc "Build APK for testing"
+  lane :build do
+    sh("cd .. && flutter build apk --release --dart-define-from-file=config/prod.json")
+  end
+end
+
+platform :ios do
+  desc "Build and deploy to TestFlight"
+  lane :deploy do
+    # Build the app
+    sh("cd .. && flutter build ipa --release --dart-define-from-file=config/prod.json")
+
+    # Upload to TestFlight
+    upload_to_testflight(
+      ipa: '../build/ios/ipa/ezflutter.ipa',
+      skip_waiting_for_build_processing: true,
+    )
+  end
+
+  desc "Build IPA for testing"
+  lane :build do
+    sh("cd .. && flutter build ipa --release --no-codesign --dart-define-from-file=config/prod.json")
+  end
+end

@@ -1,30 +1,58 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'package:ezflutter/core/env/env.dart';
+import 'package:ezflutter/core/error/app_exception.dart';
+import 'package:ezflutter/core/error/result.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:ezflutter/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const EzFlutter());
+  group('Env', () {
+    test('defaults to dev environment', () {
+      expect(Env.current, equals(Environment.dev));
+      expect(Env.isDev, isTrue);
+    });
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  group('Result', () {
+    test('success holds data', () {
+      const result = Result<int>.success(42);
+      expect(result.isSuccess, isTrue);
+      expect(result.dataOrNull, equals(42));
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    test('failure holds error', () {
+      const result = Result<int>.failure(
+        NetworkException('timeout'),
+      );
+      expect(result.isFailure, isTrue);
+      expect(result.errorOrNull, isA<NetworkException>());
+    });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    test('when dispatches correctly', () {
+      const result = Result<String>.success('hello');
+      final output = result.when(
+        success: (data) => 'got: $data',
+        failure: (error) => 'error: ${error.message}',
+      );
+      expect(output, equals('got: hello'));
+    });
+
+    test('map transforms success', () {
+      const result = Result<int>.success(21);
+      final mapped = result.map((n) => n * 2);
+      expect(mapped.dataOrNull, equals(42));
+    });
+  });
+
+  group('AppException', () {
+    test('subtypes are distinct', () {
+      const network = NetworkException('timeout');
+      const auth = AuthException('unauthorized');
+      const cache = CacheException('read failed');
+      const validation = ValidationException('invalid email');
+
+      expect(network, isA<AppException>());
+      expect(auth, isA<AppException>());
+      expect(cache, isA<AppException>());
+      expect(validation, isA<AppException>());
+    });
   });
 }
