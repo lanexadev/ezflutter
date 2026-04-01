@@ -41,7 +41,11 @@ class TranslationsFr with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsCommonFr common = _TranslationsCommonFr._(_root);
 	@override late final _TranslationsAuthFr auth = _TranslationsAuthFr._(_root);
 	@override late final _TranslationsHomeFr home = _TranslationsHomeFr._(_root);
+	@override late final _TranslationsProductsFr products = _TranslationsProductsFr._(_root);
+	@override late final _TranslationsAddProductFr addProduct = _TranslationsAddProductFr._(_root);
+	@override late final _TranslationsCartFr cart = _TranslationsCartFr._(_root);
 	@override late final _TranslationsSettingsFr settings = _TranslationsSettingsFr._(_root);
+	@override late final _TranslationsCategoriesFr categories = _TranslationsCategoriesFr._(_root);
 }
 
 // Path: app
@@ -51,7 +55,7 @@ class _TranslationsAppFr implements TranslationsAppEn {
 	final TranslationsFr _root; // ignore: unused_field
 
 	// Translations
-	@override String get name => 'EzFlutter';
+	@override String get name => 'EzShop';
 }
 
 // Path: common
@@ -70,6 +74,7 @@ class _TranslationsCommonFr implements TranslationsCommonEn {
 	@override String get save => 'Enregistrer';
 	@override String get delete => 'Supprimer';
 	@override String get edit => 'Modifier';
+	@override String get search => 'Rechercher...';
 }
 
 // Path: auth
@@ -97,9 +102,62 @@ class _TranslationsHomeFr implements TranslationsHomeEn {
 	final TranslationsFr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Accueil';
-	@override String get welcome => 'Bienvenue sur EzFlutter !';
-	@override String get greeting => 'Bonjour, {name} !';
+	@override String get title => 'EzShop';
+	@override String get welcome => 'Bienvenue sur EzShop !';
+	@override String get welcomeBack => 'Bon retour, {name} !';
+	@override String get productsAvailable => '{count} produits disponibles';
+	@override String get browseAll => 'Tout parcourir';
+	@override String get addProduct => 'Ajouter un produit';
+	@override String get featured => 'Produits en vedette';
+	@override String get signInPrompt => 'Connectez-vous pour gérer les produits';
+}
+
+// Path: products
+class _TranslationsProductsFr implements TranslationsProductsEn {
+	_TranslationsProductsFr._(this._root);
+
+	final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Produits';
+	@override String get empty => 'Aucun produit. Ajoutez le premier !';
+	@override String get inStock => 'En stock';
+	@override String get soldOut => 'Épuisé';
+	@override String get addToCart => 'Ajouté au panier';
+	@override String get details => 'Détails du produit';
+	@override String get name => 'Nom du produit';
+	@override String get description => 'Description';
+	@override String get price => 'Prix';
+	@override String get category => 'Catégorie';
+	@override String get imageUrl => 'URL de l\'image';
+	@override String get addedOn => 'Ajouté le';
+}
+
+// Path: addProduct
+class _TranslationsAddProductFr implements TranslationsAddProductEn {
+	_TranslationsAddProductFr._(this._root);
+
+	final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ajouter un produit';
+	@override String get submit => 'Ajouter le produit';
+	@override String get descriptionHint => 'Décrivez votre produit...';
+	@override String get imageHint => 'https://...';
+}
+
+// Path: cart
+class _TranslationsCartFr implements TranslationsCartEn {
+	_TranslationsCartFr._(this._root);
+
+	final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Panier';
+	@override String get empty => 'Votre panier est vide';
+	@override String get total => 'Total';
+	@override String get checkout => 'Commander';
+	@override String get checkoutDemo => 'Commande non implémentée — ceci est une démo !';
 }
 
 // Path: settings
@@ -115,6 +173,25 @@ class _TranslationsSettingsFr implements TranslationsSettingsEn {
 	@override String get themeLight => 'Clair';
 	@override String get themeDark => 'Sombre';
 	@override String get themeSystem => 'Système';
+	@override String get appearance => 'Apparence';
+	@override String get account => 'Compte';
+	@override String get logout => 'Déconnexion';
+}
+
+// Path: categories
+class _TranslationsCategoriesFr implements TranslationsCategoriesEn {
+	_TranslationsCategoriesFr._(this._root);
+
+	final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get electronics => 'Électronique';
+	@override String get sports => 'Sport';
+	@override String get home => 'Maison';
+	@override String get stationery => 'Papeterie';
+	@override String get fashion => 'Mode';
+	@override String get food => 'Alimentation';
+	@override String get other => 'Autre';
 }
 
 /// The flat map containing all translations for locale <fr>.
@@ -125,7 +202,7 @@ class _TranslationsSettingsFr implements TranslationsSettingsEn {
 extension on TranslationsFr {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
-			'app.name' => 'EzFlutter',
+			'app.name' => 'EzShop',
 			'common.ok' => 'OK',
 			'common.cancel' => 'Annuler',
 			'common.error' => 'Erreur',
@@ -135,6 +212,7 @@ extension on TranslationsFr {
 			'common.save' => 'Enregistrer',
 			'common.delete' => 'Supprimer',
 			'common.edit' => 'Modifier',
+			'common.search' => 'Rechercher...',
 			'auth.login' => 'Connexion',
 			'auth.logout' => 'Déconnexion',
 			'auth.email' => 'Email',
@@ -144,15 +222,51 @@ extension on TranslationsFr {
 			'auth.loginSuccess' => 'Bon retour !',
 			'auth.loginError' => 'Identifiants invalides',
 			'auth.loggedOut' => 'Vous avez été déconnecté',
-			'home.title' => 'Accueil',
-			'home.welcome' => 'Bienvenue sur EzFlutter !',
-			'home.greeting' => 'Bonjour, {name} !',
+			'home.title' => 'EzShop',
+			'home.welcome' => 'Bienvenue sur EzShop !',
+			'home.welcomeBack' => 'Bon retour, {name} !',
+			'home.productsAvailable' => '{count} produits disponibles',
+			'home.browseAll' => 'Tout parcourir',
+			'home.addProduct' => 'Ajouter un produit',
+			'home.featured' => 'Produits en vedette',
+			'home.signInPrompt' => 'Connectez-vous pour gérer les produits',
+			'products.title' => 'Produits',
+			'products.empty' => 'Aucun produit. Ajoutez le premier !',
+			'products.inStock' => 'En stock',
+			'products.soldOut' => 'Épuisé',
+			'products.addToCart' => 'Ajouté au panier',
+			'products.details' => 'Détails du produit',
+			'products.name' => 'Nom du produit',
+			'products.description' => 'Description',
+			'products.price' => 'Prix',
+			'products.category' => 'Catégorie',
+			'products.imageUrl' => 'URL de l\'image',
+			'products.addedOn' => 'Ajouté le',
+			'addProduct.title' => 'Ajouter un produit',
+			'addProduct.submit' => 'Ajouter le produit',
+			'addProduct.descriptionHint' => 'Décrivez votre produit...',
+			'addProduct.imageHint' => 'https://...',
+			'cart.title' => 'Panier',
+			'cart.empty' => 'Votre panier est vide',
+			'cart.total' => 'Total',
+			'cart.checkout' => 'Commander',
+			'cart.checkoutDemo' => 'Commande non implémentée — ceci est une démo !',
 			'settings.title' => 'Paramètres',
 			'settings.theme' => 'Thème',
 			'settings.language' => 'Langue',
 			'settings.themeLight' => 'Clair',
 			'settings.themeDark' => 'Sombre',
 			'settings.themeSystem' => 'Système',
+			'settings.appearance' => 'Apparence',
+			'settings.account' => 'Compte',
+			'settings.logout' => 'Déconnexion',
+			'categories.electronics' => 'Électronique',
+			'categories.sports' => 'Sport',
+			'categories.home' => 'Maison',
+			'categories.stationery' => 'Papeterie',
+			'categories.fashion' => 'Mode',
+			'categories.food' => 'Alimentation',
+			'categories.other' => 'Autre',
 			_ => null,
 		};
 	}
