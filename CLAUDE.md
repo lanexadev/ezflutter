@@ -48,6 +48,14 @@ Use `@riverpod` in `lib/app/providers/`. Run `build_runner`.
 - `flutter run --dart-define-from-file=config/dev.json` — run in dev mode
 - `flutter analyze` — check for lint errors
 
+## Build & Release
+- `dart run tools/build.dart` — build Android (APK split + AAB) + iOS
+- `dart run tools/build.dart --android` — Android only
+- `dart run tools/build.dart --ios` — iOS only (macOS required)
+- `dart run tools/build.dart --apk` — APK split-per-abi only
+- `dart run tools/build.dart --aab` — App Bundle (Play Store) only
+- `dart run tools/build.dart --env staging` — build with staging config
+
 ## Key Patterns
 - Errors: Return `Result<T>`, never throw. Use `guard()` in services.
 - State: Riverpod 3.x with code generation. `ref.watch()` in widgets.
