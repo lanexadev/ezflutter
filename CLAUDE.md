@@ -11,50 +11,37 @@ EzFlutter provides pre-built page abstractions. **Always prefer Ez* classes over
 | Class | Use case |
 |---|---|
 | `EzListPage<T>` | Lists with loading/error/empty/refresh |
+| `EzPaginatedListPage<T>` | Infinite scroll lists |
 | `EzDetailPage<T>` | Detail view from field definitions |
 | `EzFormPage` | Forms with auto field rendering + validation |
 | `EzSettingsPage` | Settings from sections config |
+| `EzTabPage` | Tabbed layout from tab definitions |
 | `EzField` | Declarative field (text, email, password, number, currency, select, toggle, date) |
 | `EzTile` | Pre-styled list tile with avatar/badge helpers |
 | `EzService` | Base service with `guard()` for auto Result wrapping |
 
+## CLI Tool
+
+**One command for everything:**
+```bash
+dart run tools/ez.dart
+```
+
+Interactive menu — create pages, services, build, rename, generate code, etc. No flags to remember.
+
 ## Creating Things
 
-### New Page
+### Via CLI (recommended)
 ```bash
-dart run tools/create_page.dart --name "Products" --type list
+dart run tools/ez.dart    # Then choose [1] Create a page, [2] Create a service, etc.
 ```
-Types: `simple`, `list`, `form`, `settings`
 
-Then add route in `lib/core/router/app_router.dart` and run `build_runner`.
-
-### New Service
-```bash
-dart run tools/create_service.dart --name "Payment"
-```
-Services extend `EzService`. Use `guard()` instead of try/catch.
-
-### New Model
-Use `@freezed` + `abstract class` in `lib/app/models/`. Run `build_runner`.
-
-### New Provider
-Use `@riverpod` in `lib/app/providers/`. Run `build_runner`.
-
-## Commands
-- `dart run tools/setup.dart` — first-time setup
-- `dart run tools/generate.dart` — run code generation
-- `dart run build_runner build --delete-conflicting-outputs` — generate code
-- `flutter test` — run tests
-- `flutter run --dart-define-from-file=config/dev.json` — run in dev mode
-- `flutter analyze` — check for lint errors
-
-## Build & Release
-- `dart run tools/build.dart` — build Android (APK split + AAB) + iOS
-- `dart run tools/build.dart --android` — Android only
-- `dart run tools/build.dart --ios` — iOS only (macOS required)
-- `dart run tools/build.dart --apk` — APK split-per-abi only
-- `dart run tools/build.dart --aab` — App Bundle (Play Store) only
-- `dart run tools/build.dart --env staging` — build with staging config
+### Manually
+- Pages: `lib/app/pages/` with `@RoutePage()` + Ez* class
+- Models: `lib/app/models/` with `@freezed` + `abstract class`
+- Services: `lib/app/services/` with `@injectable` + `extends EzService`
+- Providers: `lib/app/providers/` with `@riverpod`
+- After adding: run `dart run tools/ez.dart` → [3] Generate code
 
 ## Key Patterns
 - Errors: Return `Result<T>`, never throw. Use `guard()` in services.
