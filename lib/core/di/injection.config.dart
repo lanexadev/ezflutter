@@ -14,6 +14,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../app/services/product_service.dart' as _i162;
 import '../auth/auth_service.dart' as _i88;
 import '../network/dio_client.dart' as _i667;
 import '../network/interceptors/auth_interceptor.dart' as _i745;
@@ -31,6 +32,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final networkModule = _$NetworkModule();
+    gh.singleton<_i162.ProductService>(() => _i162.ProductService());
     gh.singleton<_i511.AppErrorInterceptor>(() => _i511.AppErrorInterceptor());
     gh.singleton<_i543.AppLogInterceptor>(() => _i543.AppLogInterceptor());
     gh.singleton<_i914.RetryInterceptor>(() => _i914.RetryInterceptor());
