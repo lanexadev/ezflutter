@@ -7,26 +7,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// ```dart
 /// @RoutePage()
 /// class CreateProductPage extends EzFormPage {
-///   CreateProductPage() : super(
-///     title: 'New Product',
-///     fields: [
-///       EzField.text('name', label: 'Name', required: true),
-///       EzField.currency('price', label: 'Price', required: true),
-///       EzField.image('imageUrl', label: 'Photo'),
-///     ],
-///     submitLabel: 'Create',
-///     onSubmit: (data) async {
-///       await getIt<ProductService>().create(data);
-///     },
-///   );
+///   const CreateProductPage({super.key});
+///
+///   @override
+///   String get title => 'New Product';
+///   @override
+///   String get submitLabel => 'Create';
+///   @override
+///   List<EzField> get fields => [
+///     EzField.text('name', label: 'Name', required: true),
+///     EzField.currency('price', label: 'Price'),
+///   ];
+///   @override
+///   Future<void> Function(Map<String, dynamic>) get onSubmit =>
+///       (data) async { ... };
 /// }
 /// ```
 abstract class EzFormPage extends ConsumerStatefulWidget {
   const EzFormPage({
-    required this.title,
-    required this.fields,
-    required this.onSubmit,
-    this.submitLabel = 'Submit',
     this.initialData,
     this.padding = const EdgeInsets.all(16),
     this.spacing = 16.0,
@@ -34,16 +32,16 @@ abstract class EzFormPage extends ConsumerStatefulWidget {
   });
 
   /// Page title.
-  final String title;
+  String get title;
 
   /// Form fields.
-  final List<EzField> fields;
+  List<EzField> get fields;
 
   /// Called with form data when submitted and valid.
-  final Future<void> Function(Map<String, dynamic> data) onSubmit;
+  Future<void> Function(Map<String, dynamic> data) get onSubmit;
 
   /// Submit button label.
-  final String submitLabel;
+  String get submitLabel => 'Submit';
 
   /// Initial values for edit mode.
   final Map<String, dynamic>? initialData;
