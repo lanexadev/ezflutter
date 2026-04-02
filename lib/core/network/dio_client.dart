@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
 import 'package:ezflutter/core/env/env.dart';
 import 'package:ezflutter/core/network/interceptors/auth_interceptor.dart';
 import 'package:ezflutter/core/network/interceptors/error_interceptor.dart';
 import 'package:ezflutter/core/network/interceptors/log_interceptor.dart';
 import 'package:ezflutter/core/network/interceptors/retry_interceptor.dart';
+import 'package:injectable/injectable.dart';
 
 @module
 abstract class NetworkModule {

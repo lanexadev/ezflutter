@@ -76,8 +76,8 @@ class _EzFormPageState extends ConsumerState<EzFormPage> {
     setState(() => _isLoading = true);
     try {
       await widget.onSubmit(_data);
-      if (mounted) Navigator.of(context).maybePop();
-    } catch (e) {
+      if (mounted) await Navigator.of(context).maybePop();
+    } on Exception catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// A pre-styled list tile for use in [EzListPage].
+/// A pre-styled list tile for use in `EzListPage`.
 ///
 /// ```dart
 /// EzTile(

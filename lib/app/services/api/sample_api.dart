@@ -10,7 +10,7 @@ part 'sample_api.g.dart';
 ///
 /// 1. Define your interface with annotations
 /// 2. Run: dart run build_runner build --delete-conflicting-outputs
-/// 3. Register in DI or access via: SampleApi(getIt<Dio>())
+/// 3. Register in DI or access via: `SampleApi(getIt<Dio>())`
 ///
 /// ```dart
 /// final api = SampleApi(getIt<Dio>());

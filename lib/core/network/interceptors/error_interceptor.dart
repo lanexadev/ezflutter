@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
 import 'package:ezflutter/core/error/app_exception.dart';
 import 'package:ezflutter/core/logging/log.dart';
+import 'package:injectable/injectable.dart';
 
 /// Converts Dio errors into typed AppExceptions.
 @singleton

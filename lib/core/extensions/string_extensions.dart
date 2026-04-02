@@ -25,8 +25,8 @@ extension StringExtensions on String {
   /// Convert to snake_case.
   String get snakeCase {
     return replaceAllMapped(
-      RegExp(r'[A-Z]'),
+      RegExp('[A-Z]'),
       (match) => '_${match.group(0)!.toLowerCase()}',
-    ).replaceAll(RegExp(r'^_'), '');
+    ).replaceAll(RegExp('^_'), '');
   }
 }

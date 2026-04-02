@@ -41,7 +41,8 @@ class Settings {
   Settings._();
   static SettingsService? _instance;
 
-  static void init(SettingsService service) => _instance = service;
+  static SettingsService? get instance => _instance;
+  static set instance(SettingsService service) => _instance = service;
 
   static T? get<T>(String key) => _instance?.get<T>(key);
 

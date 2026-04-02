@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ezflutter/core/auth/auth_service.dart';
 import 'package:ezflutter/core/auth/auth_state.dart';
 import 'package:ezflutter/core/di/injection.dart';
@@ -12,7 +14,7 @@ class Auth extends _$Auth {
 
   @override
   AuthState build() {
-    _checkAuthStatus();
+    unawaited(_checkAuthStatus());
     return const AuthState.loading();
   }
 
@@ -24,7 +26,7 @@ class Auth extends _$Auth {
       } else {
         state = const AuthState.unauthenticated();
       }
-    } catch (e) {
+    } on Exception {
       state = const AuthState.unauthenticated();
     }
   }
@@ -41,7 +43,7 @@ class Auth extends _$Auth {
   Future<void> logout() async {
     try {
       await _authService.logout();
-    } catch (_) {
+    } on Exception catch (_) {
       // Best-effort logout
     }
     state = const AuthState.unauthenticated();

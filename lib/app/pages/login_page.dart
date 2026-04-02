@@ -40,7 +40,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       setState(() => _isLoading = false);
       final state = ref.read(authProvider);
       if (state is Authenticated) {
-        context.router.maybePop();
+        await context.router.maybePop();
       } else if (state is AuthError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

@@ -32,7 +32,7 @@ abstract class EzService {
     try {
       final data = await action();
       return Result.success(data);
-    } catch (e, s) {
+    } on Exception catch (e, s) {
       final label = tag ?? runtimeType.toString();
       Log.error('$label failed', error: e, stackTrace: s);
       return Result.failure(_mapException(e));
@@ -47,7 +47,7 @@ abstract class EzService {
     try {
       final data = action();
       return Result.success(data);
-    } catch (e, s) {
+    } on Exception catch (e, s) {
       final label = tag ?? runtimeType.toString();
       Log.error('$label failed', error: e, stackTrace: s);
       return Result.failure(_mapException(e));

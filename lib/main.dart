@@ -22,7 +22,7 @@ Future<void> main() async {
     await configureDependencies();
 
     // Initialize settings convenience accessor
-    Settings.init(getIt<SettingsService>());
+    Settings.instance = getIt<SettingsService>();
 
     // Lifecycle observer
     WidgetsBinding.instance.addObserver(AppLifecycleObserver());
@@ -35,8 +35,8 @@ class EzFlutterApp extends ConsumerWidget {
   const EzFlutterApp({super.key});
 
   static final _router = AppRouter();
-  static final _lightTheme = AppTheme.light(AppConfig.seedColor);
-  static final _darkTheme = AppTheme.dark(AppConfig.seedColor);
+  static final ThemeData _lightTheme = AppTheme.light(AppConfig.seedColor);
+  static final ThemeData _darkTheme = AppTheme.dark(AppConfig.seedColor);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

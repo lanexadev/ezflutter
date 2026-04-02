@@ -50,7 +50,7 @@ final class AppThemeModeProvider
   }
 }
 
-String _$appThemeModeHash() => r'86fc76611bbecd7fb4cb9e28190594e9496c74e3';
+String _$appThemeModeHash() => r'c24ba025ee93cba5171049103bee444b2579bb05';
 
 /// Manages the app theme mode (light/dark/system).
 ///

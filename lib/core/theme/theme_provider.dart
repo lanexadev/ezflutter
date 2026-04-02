@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ezflutter/core/di/injection.dart';
 import 'package:ezflutter/core/storage/settings_service.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -36,7 +38,7 @@ class AppThemeMode extends _$AppThemeMode {
       ThemeMode.dark => ThemeMode.system,
       ThemeMode.system => ThemeMode.light,
     };
-    setThemeMode(next);
+    unawaited(setThemeMode(next));
   }
 }
 
@@ -46,11 +48,9 @@ class AppTheme {
 
   static ThemeData light(Color seedColor) => FlexThemeData.light(
         colors: FlexSchemeColor.from(primary: seedColor),
-        useMaterial3: true,
       );
 
   static ThemeData dark(Color seedColor) => FlexThemeData.dark(
         colors: FlexSchemeColor.from(primary: seedColor),
-        useMaterial3: true,
       );
 }

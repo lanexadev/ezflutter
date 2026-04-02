@@ -1,12 +1,10 @@
-import 'dart:ui';
+import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:ezflutter/core/auth/auth_provider.dart';
 import 'package:ezflutter/core/ez/ez_settings_page.dart';
 import 'package:ezflutter/core/i18n/locale_provider.dart';
 import 'package:ezflutter/core/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
 class SettingsPage extends EzSettingsPage {
@@ -41,9 +39,9 @@ class SettingsPage extends EzSettingsPage {
                 ],
                 selected: {themeMode},
                 onSelectionChanged: (modes) {
-                  ref
+                  unawaited(ref
                       .read(appThemeModeProvider.notifier)
-                      .setThemeMode(modes.first);
+                      .setThemeMode(modes.first));
                 },
               ),
             );
@@ -63,9 +61,9 @@ class SettingsPage extends EzSettingsPage {
                 ],
                 selected: {locale.languageCode},
                 onSelectionChanged: (codes) {
-                  ref
+                  unawaited(ref
                       .read(appLocaleProvider.notifier)
-                      .setLocale(Locale(codes.first));
+                      .setLocale(Locale(codes.first)));
                 },
               ),
             );

@@ -58,11 +58,6 @@ class _ErrorBoundaryInherited extends InheritedWidget {
 
   final void Function(FlutterErrorDetails) onError;
 
-  static _ErrorBoundaryInherited? of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<_ErrorBoundaryInherited>();
-  }
-
   @override
   bool updateShouldNotify(_ErrorBoundaryInherited oldWidget) =>
       onError != oldWidget.onError;

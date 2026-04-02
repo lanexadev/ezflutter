@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
 import 'package:ezflutter/core/env/env.dart';
 import 'package:ezflutter/core/logging/log.dart';
+import 'package:injectable/injectable.dart';
 
 /// Logs HTTP requests and responses in dev mode only.
 @singleton

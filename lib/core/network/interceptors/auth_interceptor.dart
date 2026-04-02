@@ -47,9 +47,8 @@ class AuthInterceptor extends Interceptor {
         jsonDecode(raw) as Map<String, dynamic>,
       );
       if (token.isExpired) return null;
-      _cachedToken = token.accessToken;
-      return _cachedToken;
-    } catch (_) {
+      return _cachedToken = token.accessToken;
+    } on Exception catch (_) {
       return null;
     }
   }
