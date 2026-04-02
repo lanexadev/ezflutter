@@ -74,7 +74,7 @@ abstract class EzDetailPage<T> extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (buildHero(context, data) case final hero?) hero,
+                ?buildHero(context, data),
                 ...fields.map((field) => field.buildDisplay(context, dataMap)),
               ],
             ),
@@ -93,7 +93,7 @@ abstract class EzDetailPage<T> extends ConsumerWidget {
     if (data is Map<String, dynamic>) return data;
     try {
       return (data as dynamic).toJson() as Map<String, dynamic>;
-    } catch (_) {
+    } on Exception catch (_) {
       return {};
     }
   }

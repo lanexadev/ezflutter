@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ezflutter/app/widgets/error_view.dart';
 import 'package:ezflutter/app/widgets/loading_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Handles AsyncValue states (loading, error, data) automatically.
 ///

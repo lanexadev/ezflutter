@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_print
 import 'dart:io';
 
 // ─── ANSI Colors ───────────────────────────────────────────────────────────
@@ -10,7 +9,6 @@ const _cyan = '\x1B[36m';
 const _green = '\x1B[32m';
 const _yellow = '\x1B[33m';
 const _red = '\x1B[31m';
-const _magenta = '\x1B[35m';
 const _white = '\x1B[37m';
 
 // ─── Entry Point ───────────────────────────────────────────────────────────
@@ -61,15 +59,15 @@ void _showMenu() {
   _printLn('  $_cyan$_bold│$_reset        ${_bold}EzFlutter CLI v2.0$_reset          $_cyan$_bold│$_reset');
   _printLn('  $_cyan$_bold├──────────────────────────────────────┤$_reset');
   _printLn('  $_cyan$_bold│$_reset                                      $_cyan$_bold│$_reset');
-  _printLn('  $_cyan$_bold│$_reset  ${_white}[1]$_reset Create a page                   $_cyan$_bold│$_reset');
-  _printLn('  $_cyan$_bold│$_reset  ${_white}[2]$_reset Create a service                $_cyan$_bold│$_reset');
-  _printLn('  $_cyan$_bold│$_reset  ${_white}[3]$_reset Generate code                   $_cyan$_bold│$_reset');
-  _printLn('  $_cyan$_bold│$_reset  ${_white}[4]$_reset Clean & rebuild                 $_cyan$_bold│$_reset');
-  _printLn('  $_cyan$_bold│$_reset  ${_white}[5]$_reset Build app                       $_cyan$_bold│$_reset');
-  _printLn('  $_cyan$_bold│$_reset  ${_white}[6]$_reset Rename project                  $_cyan$_bold│$_reset');
-  _printLn('  $_cyan$_bold│$_reset  ${_white}[7]$_reset Update dependencies             $_cyan$_bold│$_reset');
-  _printLn('  $_cyan$_bold│$_reset  ${_white}[8]$_reset Setup (first time)              $_cyan$_bold│$_reset');
-  _printLn('  $_cyan$_bold│$_reset  ${_dim}[0]$_reset ${_dim}Exit$_reset                            $_cyan$_bold│$_reset');
+  _printLn('  $_cyan$_bold│$_reset  $_white[1]$_reset Create a page                   $_cyan$_bold│$_reset');
+  _printLn('  $_cyan$_bold│$_reset  $_white[2]$_reset Create a service                $_cyan$_bold│$_reset');
+  _printLn('  $_cyan$_bold│$_reset  $_white[3]$_reset Generate code                   $_cyan$_bold│$_reset');
+  _printLn('  $_cyan$_bold│$_reset  $_white[4]$_reset Clean & rebuild                 $_cyan$_bold│$_reset');
+  _printLn('  $_cyan$_bold│$_reset  $_white[5]$_reset Build app                       $_cyan$_bold│$_reset');
+  _printLn('  $_cyan$_bold│$_reset  $_white[6]$_reset Rename project                  $_cyan$_bold│$_reset');
+  _printLn('  $_cyan$_bold│$_reset  $_white[7]$_reset Update dependencies             $_cyan$_bold│$_reset');
+  _printLn('  $_cyan$_bold│$_reset  $_white[8]$_reset Setup (first time)              $_cyan$_bold│$_reset');
+  _printLn('  $_cyan$_bold│$_reset  $_dim[0]$_reset ${_dim}Exit$_reset                            $_cyan$_bold│$_reset');
   _printLn('  $_cyan$_bold│$_reset                                      $_cyan$_bold│$_reset');
   _printLn('  $_cyan$_bold└──────────────────────────────────────┘$_reset');
   _printLn('');
@@ -85,12 +83,12 @@ Future<void> _createPage() async {
 
   _printLn('');
   _printLn('  Page type:');
-  _printLn('    ${_white}[1]$_reset Simple (ConsumerWidget)');
-  _printLn('    ${_white}[2]$_reset List (EzListPage — loading/error/empty/refresh)');
-  _printLn('    ${_white}[3]$_reset Detail (EzDetailPage — field display)');
-  _printLn('    ${_white}[4]$_reset Form (EzFormPage — auto validation)');
-  _printLn('    ${_white}[5]$_reset Settings (EzSettingsPage — sections)');
-  _printLn('    ${_white}[6]$_reset Tabs (EzTabPage — tabbed layout)');
+  _printLn('    $_white[1]$_reset Simple (ConsumerWidget)');
+  _printLn('    $_white[2]$_reset List (EzListPage — loading/error/empty/refresh)');
+  _printLn('    $_white[3]$_reset Detail (EzDetailPage — field display)');
+  _printLn('    $_white[4]$_reset Form (EzFormPage — auto validation)');
+  _printLn('    $_white[5]$_reset Settings (EzSettingsPage — sections)');
+  _printLn('    $_white[6]$_reset Tabs (EzTabPage — tabbed layout)');
   _printLn('');
   final typeChoice = _ask('  Choose [1-6]');
 
@@ -144,7 +142,8 @@ Future<void> _createService() async {
     return;
   }
 
-  final content = """import 'package:injectable/injectable.dart';
+  final content = """
+import 'package:injectable/injectable.dart';
 import 'package:ezflutter/core/error/result.dart';
 import 'package:ezflutter/core/ez/ez_service.dart';
 
@@ -221,9 +220,9 @@ Future<void> _buildApp() async {
   _header('Build App');
 
   _printLn('  Platform:');
-  _printLn('    ${_white}[1]$_reset Android');
-  _printLn('    ${_white}[2]$_reset iOS');
-  _printLn('    ${_white}[3]$_reset Both');
+  _printLn('    $_white[1]$_reset Android');
+  _printLn('    $_white[2]$_reset iOS');
+  _printLn('    $_white[3]$_reset Both');
   _printLn('');
   final platformChoice = _ask('  Choose [1-3]');
 
@@ -236,9 +235,9 @@ Future<void> _buildApp() async {
   if (android) {
     _printLn('');
     _printLn('  Android format:');
-    _printLn('    ${_white}[1]$_reset APK (split per architecture)');
-    _printLn('    ${_white}[2]$_reset App Bundle (Play Store)');
-    _printLn('    ${_white}[3]$_reset Both');
+    _printLn('    $_white[1]$_reset APK (split per architecture)');
+    _printLn('    $_white[2]$_reset App Bundle (Play Store)');
+    _printLn('    $_white[3]$_reset Both');
     _printLn('');
     final formatChoice = _ask('  Choose [1-3]');
     buildApk = formatChoice == '1' || formatChoice == '3';
@@ -247,9 +246,9 @@ Future<void> _buildApp() async {
 
   _printLn('');
   _printLn('  Environment:');
-  _printLn('    ${_white}[1]$_reset dev');
-  _printLn('    ${_white}[2]$_reset staging');
-  _printLn('    ${_white}[3]$_reset prod');
+  _printLn('    $_white[1]$_reset dev');
+  _printLn('    $_white[2]$_reset staging');
+  _printLn('    $_white[3]$_reset prod');
   _printLn('');
   final envChoice = _ask('  Choose [1-3]');
   final env = switch (envChoice) {
@@ -471,7 +470,8 @@ String _pageTemplate(String name, String type) => switch (type) {
       _ => _simpleTemplate(name),
     };
 
-String _simpleTemplate(String n) => """import 'package:auto_route/auto_route.dart';
+String _simpleTemplate(String n) => """
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -489,7 +489,8 @@ class ${n}Page extends ConsumerWidget {
 }
 """;
 
-String _listTemplate(String n) => """import 'package:auto_route/auto_route.dart';
+String _listTemplate(String n) => """
+import 'package:auto_route/auto_route.dart';
 import 'package:ezflutter/core/ez/ez_list_page.dart';
 import 'package:ezflutter/core/ez/ez_tile.dart';
 import 'package:flutter/material.dart';
@@ -515,7 +516,8 @@ class ${n}Page extends EzListPage<dynamic> {
 }
 """;
 
-String _detailTemplate(String n) => """import 'package:auto_route/auto_route.dart';
+String _detailTemplate(String n) => """
+import 'package:auto_route/auto_route.dart';
 import 'package:ezflutter/core/ez/ez_detail_page.dart';
 import 'package:ezflutter/core/ez/ez_field.dart';
 import 'package:flutter/material.dart';
@@ -543,7 +545,8 @@ class ${n}Page extends EzDetailPage<dynamic> {
 }
 """;
 
-String _formTemplate(String n) => """import 'package:auto_route/auto_route.dart';
+String _formTemplate(String n) => """
+import 'package:auto_route/auto_route.dart';
 import 'package:ezflutter/core/ez/ez_field.dart';
 import 'package:ezflutter/core/ez/ez_form_page.dart';
 import 'package:flutter/material.dart';
@@ -573,7 +576,8 @@ class ${n}Page extends EzFormPage {
 }
 """;
 
-String _settingsTemplate(String n) => """import 'package:auto_route/auto_route.dart';
+String _settingsTemplate(String n) => """
+import 'package:auto_route/auto_route.dart';
 import 'package:ezflutter/core/ez/ez_settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -594,7 +598,8 @@ class ${n}Page extends EzSettingsPage {
 }
 """;
 
-String _tabsTemplate(String n) => """import 'package:auto_route/auto_route.dart';
+String _tabsTemplate(String n) => """
+import 'package:auto_route/auto_route.dart';
 import 'package:ezflutter/core/ez/ez_tab_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -675,16 +680,16 @@ void _listOutputFiles(String dir) {
 
 String _toSnakeCase(String input) {
   return input
-      .replaceAll(RegExp(r'[^a-zA-Z0-9]'), '_')
-      .replaceAll(RegExp(r'([A-Z])'), r'_$1')
+      .replaceAll(RegExp('[^a-zA-Z0-9]'), '_')
+      .replaceAll(RegExp('([A-Z])'), r'_$1')
       .toLowerCase()
-      .replaceAll(RegExp(r'_+'), '_')
+      .replaceAll(RegExp('_+'), '_')
       .replaceAll(RegExp(r'^_|_$'), '');
 }
 
 String _toPascalCase(String input) {
   return input
-      .replaceAll(RegExp(r'[^a-zA-Z0-9]'), ' ')
+      .replaceAll(RegExp('[^a-zA-Z0-9]'), ' ')
       .split(' ')
       .where((s) => s.isNotEmpty)
       .map((s) => s[0].toUpperCase() + s.substring(1).toLowerCase())

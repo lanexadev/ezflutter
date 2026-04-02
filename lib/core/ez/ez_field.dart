@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-/// A declarative field definition used in [EzDetailPage] and [EzFormPage].
+/// A declarative field definition used in `EzDetailPage` and `EzFormPage`.
 ///
 /// Defines both how to display and how to input data for a field.
 ///
@@ -25,44 +25,6 @@ class EzField {
     this.maxLines = 1,
     this.validator,
   });
-
-  /// The key in the data map (must match the model field name).
-  final String key;
-
-  /// Display label.
-  final String label;
-
-  /// Field type.
-  final EzFieldType type;
-
-  /// Whether the field is required in forms.
-  final bool required;
-
-  /// Whether the field is read-only in forms.
-  final bool readOnly;
-
-  /// Hint text for input fields.
-  final String? hint;
-
-  /// Leading icon.
-  final IconData? icon;
-
-  /// Options for select/dropdown fields.
-  final List<String>? options;
-
-  /// Currency symbol for currency fields.
-  final String? symbol;
-
-  /// Whether to obscure text (for passwords).
-  final bool obscure;
-
-  /// Max lines for text areas.
-  final int maxLines;
-
-  /// Custom validator.
-  final String? Function(String?)? validator;
-
-  // ---- Factory constructors ----
 
   /// A text field.
   factory EzField.text(
@@ -137,7 +99,7 @@ class EzField {
   factory EzField.currency(
     String key, {
     required String label,
-    String symbol = '\$',
+    String symbol = r'$',
     bool required = false,
   }) =>
       EzField._(
@@ -211,6 +173,42 @@ class EzField {
         hint: hint,
         maxLines: maxLines,
       );
+
+  /// The key in the data map (must match the model field name).
+  final String key;
+
+  /// Display label.
+  final String label;
+
+  /// Field type.
+  final EzFieldType type;
+
+  /// Whether the field is required in forms.
+  final bool required;
+
+  /// Whether the field is read-only in forms.
+  final bool readOnly;
+
+  /// Hint text for input fields.
+  final String? hint;
+
+  /// Leading icon.
+  final IconData? icon;
+
+  /// Options for select/dropdown fields.
+  final List<String>? options;
+
+  /// Currency symbol for currency fields.
+  final String? symbol;
+
+  /// Whether to obscure text (for passwords).
+  final bool obscure;
+
+  /// Max lines for text areas.
+  final int maxLines;
+
+  /// Custom validator.
+  final String? Function(String?)? validator;
 
   // ---- Rendering ----
 
@@ -301,7 +299,7 @@ class EzField {
 
   Widget _buildSelectInput(Map<String, dynamic> data) {
     return DropdownButtonFormField<String>(
-      value: data[key]?.toString(),
+      initialValue: data[key]?.toString(),
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: icon != null ? Icon(icon) : null,
@@ -384,7 +382,7 @@ class EzField {
   String _formatValue(dynamic value) {
     if (value == null) return '—';
     if (type == EzFieldType.currency) {
-      return '${symbol ?? '\$'}${value is num ? value.toStringAsFixed(2) : value}';
+      return '${symbol ?? r'$'}${value is num ? value.toStringAsFixed(2) : value}';
     }
     if (type == EzFieldType.date && value is DateTime) {
       return '${value.day}/${value.month}/${value.year}';

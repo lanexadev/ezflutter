@@ -1,11 +1,12 @@
 import 'dart:convert';
-import 'package:injectable/injectable.dart';
-import 'package:ezflutter/core/error/result.dart';
+
 import 'package:ezflutter/core/error/app_exception.dart';
+import 'package:ezflutter/core/error/result.dart';
+import 'package:ezflutter/core/logging/log.dart';
 import 'package:ezflutter/core/models/auth_token.dart';
 import 'package:ezflutter/core/models/user.dart';
 import 'package:ezflutter/core/storage/secure_storage_service.dart';
-import 'package:ezflutter/core/logging/log.dart';
+import 'package:injectable/injectable.dart';
 
 /// Abstract auth service — implement with your backend.
 abstract class AuthService {
@@ -29,7 +30,7 @@ class DefaultAuthService implements AuthService {
   @override
   Future<Result<User>> login(String email, String password) async {
     try {
-      // TODO: Replace with actual API call
+      // TODO(dev): Replace with actual API call
       // final response = await dio.post('/auth/login', data: {...});
 
       // Placeholder: simulate successful login
@@ -50,7 +51,7 @@ class DefaultAuthService implements AuthService {
 
       Log.info('User logged in: ${user.email}');
       return Result.success(user);
-    } catch (e, s) {
+    } on Exception catch (e, s) {
       Log.error('Login failed', error: e, stackTrace: s);
       return Result.failure(AuthException('Login failed: $e'));
     }
@@ -69,7 +70,7 @@ class DefaultAuthService implements AuthService {
     if (userData == null) return null;
     try {
       return User.fromJson(jsonDecode(userData) as Map<String, dynamic>);
-    } catch (_) {
+    } on Exception catch (_) {
       return null;
     }
   }
@@ -82,7 +83,7 @@ class DefaultAuthService implements AuthService {
       return AuthToken.fromJson(
         jsonDecode(tokenData) as Map<String, dynamic>,
       );
-    } catch (_) {
+    } on Exception catch (_) {
       return null;
     }
   }

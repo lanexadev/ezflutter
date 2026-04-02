@@ -1,7 +1,8 @@
 import 'dart:ui';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 import 'package:ezflutter/core/di/injection.dart';
 import 'package:ezflutter/core/storage/settings_service.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'locale_provider.g.dart';
 

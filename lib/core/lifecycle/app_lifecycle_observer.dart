@@ -1,5 +1,5 @@
-import 'package:flutter/widgets.dart';
 import 'package:ezflutter/core/logging/log.dart';
+import 'package:flutter/widgets.dart';
 
 /// Observes app lifecycle events (foreground/background).
 class AppLifecycleObserver extends WidgetsBindingObserver {

@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:ezflutter/app/widgets/empty_state.dart';
 import 'package:ezflutter/app/widgets/error_view.dart';
 import 'package:ezflutter/app/widgets/loading_widget.dart';
@@ -97,7 +96,7 @@ abstract class EzListPage<T> extends ConsumerWidget {
             child: ListView.separated(
               padding: padding,
               itemCount: items.length,
-              separatorBuilder: (_, __) => divider
+              separatorBuilder: (_, _) => divider
                   ? const Divider(height: 1)
                   : const SizedBox.shrink(),
               itemBuilder: (context, index) {

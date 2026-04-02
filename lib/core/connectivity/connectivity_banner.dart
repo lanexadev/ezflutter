@@ -1,6 +1,6 @@
+import 'package:ezflutter/core/connectivity/connectivity_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ezflutter/core/connectivity/connectivity_provider.dart';
 
 /// A banner that shows when the device is offline.
 class ConnectivityBanner extends ConsumerWidget {
@@ -23,7 +23,7 @@ class ConnectivityBanner extends ConsumerWidget {
                   actions: const [SizedBox.shrink()],
                 ),
           loading: () => const SizedBox.shrink(),
-          error: (_, __) => const SizedBox.shrink(),
+          error: (_, _) => const SizedBox.shrink(),
         ),
         Expanded(child: child),
       ],

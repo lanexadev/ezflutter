@@ -1,5 +1,6 @@
+import 'dart:async';
+
 import 'package:ezflutter/app/widgets/error_view.dart';
-import 'package:ezflutter/app/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -78,7 +79,7 @@ class _EzPaginatedListPageState<T>
   @override
   void initState() {
     super.initState();
-    _loadPage();
+    unawaited(_loadPage());
   }
 
   Future<void> _loadPage() async {
@@ -98,7 +99,7 @@ class _EzPaginatedListPageState<T>
           _isLoading = false;
         });
       }
-    } catch (e) {
+    } on Exception catch (e) {
       if (mounted) {
         setState(() {
           _error = e;
@@ -156,12 +157,12 @@ class _EzPaginatedListPageState<T>
       child: ListView.separated(
         padding: widget.padding,
         itemCount: _items.length + (_hasMore ? 1 : 0),
-        separatorBuilder: (_, __) => widget.divider
+        separatorBuilder: (_, _) => widget.divider
             ? const Divider(height: 1)
             : const SizedBox.shrink(),
         itemBuilder: (context, index) {
           if (index >= _items.length) {
-            _loadPage();
+            unawaited(_loadPage());
             return const Padding(
               padding: EdgeInsets.all(16),
               child: Center(child: CircularProgressIndicator()),
