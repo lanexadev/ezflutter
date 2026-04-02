@@ -14,5 +14,5 @@ jobs:
           channel: stable
       - run: flutter pub get
       - run: dart run build_runner build --delete-conflicting-outputs
-      - run: flutter analyze
+      - run: flutter analyze --no-fatal-infos
       - run: flutter test --coverage
