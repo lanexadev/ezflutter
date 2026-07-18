@@ -9,7 +9,7 @@ A production-ready Flutter boilerplate with dual-layer architecture — designed
 ## Quick Start
 
 ```bash
-git clone https://github.com/lanexadev/ezflutter.git
+git clone https://github.com/lucasschimmel/ezflutter.git
 cd ezflutter
 dart run tools/ez.dart    # Choose [8] Setup
 flutter run --dart-define-from-file=config/dev.json
@@ -182,7 +182,7 @@ Interactive menu — no flags or arguments to remember:
 
 ### Setup
 ```bash
-git clone https://github.com/lanexadev/ezflutter.git
+git clone https://github.com/lucasschimmel/ezflutter.git
 cd ezflutter
 dart run tools/ez.dart    # Choose [8] Setup
 ```
@@ -268,4 +268,4 @@ MIT License — see [LICENSE](LICENSE)
 
 ---
 
-Made with Flutter by [LanexaDev](https://github.com/lanexadev)
+Made with Flutter by [lucasschimmel](https://github.com/lucasschimmel)
