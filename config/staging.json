@@ -1,7 +1,0 @@
-{
-  "ENV": "staging",
-  "API_BASE_URL": "https://staging-api.example.com",
-  "APP_NAME": "EzFlutter Staging",
-  "ENABLE_LOGGING": true,
-  "ENABLE_CRASH_REPORTING": true
-}

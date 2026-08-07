@@ -1,21 +1,36 @@
-name: Build
+name: Mobile build
 
 on:
-  push:
+  pull_request:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  build-android:
+  android:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-      - run: flutter pub get
-      - run: dart run build_runner build --delete-conflicting-outputs
-      - run: flutter build apk --release --dart-define-from-file=config/prod.json
-      - uses: actions/upload-artifact@v4
+          cache: true
+      - run: dart pub get
+      - run: dart run packages/nativiq_cli/bin/nativiq.dart create build_app --output "$RUNNER_TEMP/build_app" --local-framework "$GITHUB_WORKSPACE/packages/nativiq"
+      - working-directory: ${{ runner.temp }}/build_app
+        run: flutter build apk --debug --flavor dev --target lib/main_dev.dart --dart-define=APP_ENV=dev
+
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
         with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          channel: stable
+          cache: true
+      - run: dart pub get
+      - run: dart run packages/nativiq_cli/bin/nativiq.dart create build_app --output "$RUNNER_TEMP/build_app" --local-framework "$GITHUB_WORKSPACE/packages/nativiq"
+      - working-directory: ${{ runner.temp }}/build_app
+        run: flutter build ios --simulator --debug --target lib/main_dev.dart --dart-define=APP_ENV=dev

@@ -1,0 +1,37 @@
+# Permit deterministic, repository-local quality checks.
+prefix_rule(
+    pattern = [".agents/hooks/check-agent-contract.sh"],
+    decision = "allow",
+    justification = "Read-only validation of the repository agent contract.",
+)
+
+prefix_rule(
+    pattern = [".agents/hooks/validate.sh"],
+    decision = "allow",
+    justification = "Repository-owned formatting, analysis, and test gate.",
+)
+
+prefix_rule(
+    pattern = [".agents/hooks/check-generated-project.sh"],
+    decision = "allow",
+    justification = "Repository-owned generated Flutter application smoke test.",
+)
+
+prefix_rule(
+    pattern = ["flutter", ["analyze", "test"]],
+    decision = "allow",
+    justification = "Standard non-destructive Flutter verification.",
+)
+
+prefix_rule(
+    pattern = ["dart", ["analyze", "test", "format"]],
+    decision = "allow",
+    justification = "Standard non-destructive Dart verification and formatting checks.",
+)
+
+# Require explicit approval for destructive publication or history changes.
+prefix_rule(
+    pattern = ["git", ["push", "reset", "rebase", "branch"]],
+    decision = "prompt",
+    justification = "May alter shared history or remote repository state.",
+)

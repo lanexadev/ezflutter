@@ -1,0 +1,4 @@
+interface:
+  display_name: "release"
+  short_description: "Nativiq repository workflow for release"
+  default_prompt: "Use $release to complete this Nativiq workflow safely."

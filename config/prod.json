@@ -1,7 +1,0 @@
-{
-  "ENV": "prod",
-  "API_BASE_URL": "https://api.example.com",
-  "APP_NAME": "EzFlutter",
-  "ENABLE_LOGGING": false,
-  "ENABLE_CRASH_REPORTING": true
-}

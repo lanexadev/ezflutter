@@ -3,16 +3,45 @@ name: Quality
 on:
   pull_request:
     branches: [main, develop]
+  push:
+    branches: [develop]
+
+permissions:
+  contents: read
 
 jobs:
-  quality:
+  packages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-      - run: flutter pub get
-      - run: dart run build_runner build --delete-conflicting-outputs
-      - run: flutter analyze --no-fatal-infos
-      - run: flutter test --coverage
+          cache: true
+      - run: dart pub get
+      - run: dart format --output=none --set-exit-if-changed packages
+      - run: dart analyze --fatal-infos
+      - run: flutter test packages/nativiq
+      - run: dart test packages/nativiq_cli
+      - run: .agents/hooks/check-agent-contract.sh
+
+  generated-app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: dart pub get
+      - run: dart run packages/nativiq_cli/bin/nativiq.dart create ci_app --output "$RUNNER_TEMP/ci_app" --local-framework "$GITHUB_WORKSPACE/packages/nativiq"
+      - working-directory: ${{ runner.temp }}/ci_app
+        run: flutter pub get && flutter analyze --fatal-infos && flutter test
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2

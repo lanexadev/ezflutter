@@ -1,0 +1,4 @@
+interface:
+  display_name: "deliver-feature"
+  short_description: "Nativiq repository workflow for deliver-feature"
+  default_prompt: "Use $deliver-feature to complete this Nativiq workflow safely."

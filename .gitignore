@@ -32,6 +32,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+**/build/
 /coverage/
 
 # Symbolication
@@ -47,6 +48,9 @@ app.*.map.json
 
 # Claude Code outputs (internal, not source code)
 .claude/
+
+# Local CRAFTS execution state (repository rules under .codex/rules stay tracked)
+.codex/crafts/
 
 # Fastlane secrets & artifacts
 fastlane/play-store-key.json

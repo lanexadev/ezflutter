@@ -1,51 +1,14 @@
-name: ezflutter
-description: "EzFlutter V2 — Production-ready Flutter boilerplate with modular architecture."
-publish_to: 'none'
-version: 2.0.0+1
+name: nativiq_workspace
+description: Nativiq V3 development workspace.
+publish_to: none
+version: 3.0.0
 
 environment:
-  sdk: ^3.11.4
+  sdk: ^3.11.0
 
-dependencies:
-  auto_route: ^11.1.0
-  connectivity_plus: ">=6.1.0 <7.1.0"
-  cupertino_icons: ^1.0.8
-  dio: ^5.9.2
-  flex_color_scheme: ^8.4.0
-  flutter:
-    sdk: flutter
-  flutter_riverpod: ^3.3.1
-  flutter_secure_storage: ^10.0.0
-  freezed_annotation: ^3.1.0
-  get_it: any
-  injectable: any
-  json_annotation: ^4.11.0
-  logger: any
-  retrofit: any
-  riverpod_annotation: any
-  shared_preferences: any
-  slang: any
-  slang_flutter: any
+workspace:
+  - packages/nativiq
+  - packages/nativiq_cli
 
 dev_dependencies:
-  auto_route_generator: any
-  build_runner: any
-  flutter_launcher_icons: any
-  flutter_native_splash: any
-  flutter_test:
-    sdk: flutter
-  freezed: any
-  injectable_generator: any
-  json_serializable: any
-  mocktail: any
-  retrofit_generator: any
-  riverpod_generator: any
-  # slang: run `dart run slang` separately (not via build_runner)
-  very_good_analysis: any
-
-flutter:
-  uses-material-design: true
-
-  assets:
-    - assets/locales/
-    - assets/images/
+  very_good_analysis: ^10.2.0
