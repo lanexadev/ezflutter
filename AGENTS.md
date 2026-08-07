@@ -1,6 +1,6 @@
-# Nativiq agent contract
+# START.DART agent contract
 
-Nativiq is an AI-native Flutter application system for Android and iOS. This file is the canonical entry point for every coding agent in this repository.
+START.DART is an AI-native Flutter application system for Android and iOS. This file is the canonical entry point for every coding agent in this repository.
 
 ## Load context progressively
 
@@ -13,7 +13,7 @@ Nativiq is an AI-native Flutter application system for Android and iOS. This fil
 
 - Support Android and iOS only. Do not add web or desktop platforms.
 - Follow feature-first MVVM: views depend on view models; view models depend on repositories; repositories depend on services.
-- Return typed failures through Nativiq primitives. Do not leak infrastructure exceptions into UI code.
+- Return typed failures through START.DART primitives. Do not leak infrastructure exceptions into UI code.
 - Keep secrets out of source, fixtures, logs, and generated projects.
 - Make the smallest coherent change, add proportional tests, and run `.agents/hooks/validate.sh` before handoff.
 - Never add AI attribution or co-author trailers to commits.

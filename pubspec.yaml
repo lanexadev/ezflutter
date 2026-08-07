@@ -1,5 +1,5 @@
-name: nativiq_workspace
-description: Nativiq V3 development workspace.
+name: start_dart_workspace
+description: START.DART V3 development workspace.
 publish_to: none
 version: 3.0.0
 
@@ -7,8 +7,8 @@ environment:
   sdk: ^3.11.0
 
 workspace:
-  - packages/nativiq
-  - packages/nativiq_cli
+  - packages/start_dart
+  - packages/start_dart_cli
 
 dev_dependencies:
   very_good_analysis: ^10.2.0

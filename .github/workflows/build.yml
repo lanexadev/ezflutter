@@ -2,8 +2,12 @@ name: Mobile build
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, develop]
   workflow_dispatch:
+
+concurrency:
+  group: mobile-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -11,6 +15,7 @@ permissions:
 jobs:
   android:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
@@ -18,12 +23,13 @@ jobs:
           channel: stable
           cache: true
       - run: dart pub get
-      - run: dart run packages/nativiq_cli/bin/nativiq.dart create build_app --output "$RUNNER_TEMP/build_app" --local-framework "$GITHUB_WORKSPACE/packages/nativiq"
+      - run: dart run packages/start_dart_cli/bin/startdart.dart create build_app --output "$RUNNER_TEMP/build_app" --local-framework "$GITHUB_WORKSPACE/packages/start_dart"
       - working-directory: ${{ runner.temp }}/build_app
         run: flutter build apk --debug --flavor dev --target lib/main_dev.dart --dart-define=APP_ENV=dev
 
   ios:
     runs-on: macos-latest
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
@@ -31,6 +37,6 @@ jobs:
           channel: stable
           cache: true
       - run: dart pub get
-      - run: dart run packages/nativiq_cli/bin/nativiq.dart create build_app --output "$RUNNER_TEMP/build_app" --local-framework "$GITHUB_WORKSPACE/packages/nativiq"
+      - run: dart run packages/start_dart_cli/bin/startdart.dart create build_app --output "$RUNNER_TEMP/build_app" --local-framework "$GITHUB_WORKSPACE/packages/start_dart"
       - working-directory: ${{ runner.temp }}/build_app
         run: flutter build ios --simulator --debug --target lib/main_dev.dart --dart-define=APP_ENV=dev

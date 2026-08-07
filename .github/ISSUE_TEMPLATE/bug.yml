@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a reproducible Nativiq problem
+description: Report a reproducible START.DART problem
 body:
   - type: textarea
     id: description
@@ -16,7 +16,7 @@ body:
   - type: input
     id: versions
     attributes:
-      label: Nativiq, Flutter, and Dart versions
+      label: START.DART, Flutter, and Dart versions
     validations:
       required: true
   - type: dropdown

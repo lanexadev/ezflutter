@@ -6,12 +6,12 @@
 - Dart 3.11 or later
 - Android Studio/Xcode according to the platform you build
 
-Run `nativiq doctor` before creating an app. Diagnostics can be consumed by automation with `nativiq doctor --json`.
+Run `startdart doctor` before creating an app. Diagnostics can be consumed by automation with `startdart doctor --json`.
 
 ## Create an application
 
 ```bash
-nativiq create acme_mobile --org com.acme
+startdart create acme_mobile --org com.acme
 cd acme_mobile
 flutter pub get
 flutter test
@@ -23,8 +23,8 @@ Generation is non-interactive and safe by default: invalid Dart package names, u
 ## Extend it
 
 ```bash
-nativiq add feature checkout
-nativiq add model checkout order
+startdart add feature checkout
+startdart add model checkout order
 ```
 
 Run the repository hook after changes:

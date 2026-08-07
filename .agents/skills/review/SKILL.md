@@ -1,6 +1,6 @@
 ---
 name: review
-description: Review Nativiq changes for correctness, regressions, architecture, security, tests, documentation, and agent-contract drift. Use for code review, pull-request review, pre-merge audit, design verification, and release-readiness review.
+description: Review START.DART changes for correctness, regressions, architecture, security, tests, documentation, and agent-contract drift. Use for code review, pull-request review, pre-merge audit, design verification, and release-readiness review.
 ---
 
 # Review a change

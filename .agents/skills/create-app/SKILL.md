@@ -1,9 +1,9 @@
 ---
 name: create-app
-description: Create and verify a new Android/iOS Nativiq Flutter application with the non-interactive CLI. Use when asked to scaffold, bootstrap, initialize, or smoke-test a generated Nativiq app.
+description: Create and verify a new Android/iOS START.DART Flutter application with the non-interactive CLI. Use when asked to scaffold, bootstrap, initialize, or smoke-test a generated START.DART app.
 ---
 
-# Create a Nativiq app
+# Create a START.DART app
 
 1. Read `AGENTS.md`, `.agents/rules/security.md`, and `.agents/rules/dart-flutter.md`.
 2. Inspect CLI help before choosing flags; never assume unpublished options.

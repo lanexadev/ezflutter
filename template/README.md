@@ -1,4 +1,4 @@
-# nativiq_app
+# start_dart_app
 
 AI-native Flutter application template.
 

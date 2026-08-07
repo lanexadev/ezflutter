@@ -1,6 +1,6 @@
 ---
 name: create-feature
-description: Add a feature while preserving Nativiq feature-first MVVM boundaries.
+description: Add a feature while preserving START.DART feature-first MVVM boundaries.
 ---
 
 # Create a feature
@@ -11,4 +11,4 @@ description: Add a feature while preserving Nativiq feature-first MVVM boundarie
 4. Add unit and widget tests for observable behavior.
 5. Run `flutter analyze` and `flutter test`.
 
-Prefer `nativiq add feature <name>` for the initial scaffold.
+Prefer `startdart add feature <name>` for the initial scaffold.

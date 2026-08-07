@@ -1,6 +1,6 @@
 ---
 name: deliver-feature
-description: Implement an end-to-end Nativiq or generated-app feature using feature-first MVVM and typed failures. Use for new product behavior, feature changes, CLI subcommands, framework capabilities, and bug fixes that cross architectural layers.
+description: Implement an end-to-end START.DART or generated-app feature using feature-first MVVM and typed failures. Use for new product behavior, feature changes, CLI subcommands, framework capabilities, and bug fixes that cross architectural layers.
 ---
 
 # Deliver a feature

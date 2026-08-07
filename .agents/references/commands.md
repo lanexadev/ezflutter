@@ -18,4 +18,4 @@ flutter analyze
 flutter test
 ```
 
-The validation hook discovers Dart/Flutter packages. Pass package directories to restrict a run, for example `.agents/hooks/validate.sh packages/nativiq`.
+The validation hook discovers Dart/Flutter packages. Pass package directories to restrict a run, for example `.agents/hooks/validate.sh packages/start_dart`.

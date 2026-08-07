@@ -1,9 +1,9 @@
 ---
 name: test
-description: Design, add, and run deterministic tests for Nativiq framework, CLI, templates, and generated Flutter apps. Use for test strategy, regressions, coverage gaps, generator smoke tests, widgets, integration tests, and acceptance verification.
+description: Design, add, and run deterministic tests for START.DART framework, CLI, templates, and generated Flutter apps. Use for test strategy, regressions, coverage gaps, generator smoke tests, widgets, integration tests, and acceptance verification.
 ---
 
-# Test Nativiq
+# Test START.DART
 
 1. Read `AGENTS.md` and `.agents/rules/tests.md`; add security rules for generator or filesystem tests.
 2. Identify the behavior boundary and select the cheapest test that proves it: unit, widget, CLI integration, generated-project smoke, or workflow inspection.

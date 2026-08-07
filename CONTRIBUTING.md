@@ -1,11 +1,19 @@
-# Contributing
+# Contributing to START.DART
 
-Contributions are welcome. Open an issue for substantial behavior or API changes before implementation.
+Contributions are welcome. Use a GitHub issue or discussion before implementing a substantial API or architecture change.
 
-1. Branch from `develop`.
-2. Keep changes focused and add tests for behavior.
-3. Run `.agents/hooks/check.sh`.
-4. Use conventional commit subjects without automated attribution trailers.
-5. Open a pull request to `develop` and complete the template.
+## Development workflow
 
-Public APIs require documentation and a changelog entry. Breaking changes require a migration note. Never commit credentials, signing material, personal data, or generated build output.
+1. Fork the repository and branch from `develop`.
+2. Keep the change focused and add tests for observable behavior.
+3. Run `.agents/hooks/validate.sh` from the repository root.
+4. Use an English [Conventional Commit](https://www.conventionalcommits.org/) subject.
+5. Open a pull request to `develop` and complete the pull request template.
+
+Public API changes require documentation and a changelog entry. Breaking changes require migration guidance. Never commit credentials, signing material, personal data, generated build output, or automated attribution trailers.
+
+## Release flow
+
+`develop` is the integration branch. Stable releases are merged into `main`, tagged with a semantic version, and published through the release workflow.
+
+By contributing, you agree that your work is licensed under the repository's MIT License and that you will follow the [Code of Conduct](CODE_OF_CONDUCT.md).

@@ -1,13 +1,13 @@
 # Architecture
 
-Nativiq uses feature-first MVVM with explicit boundaries.
+START.DART uses feature-first MVVM with explicit boundaries.
 
 1. Views render state and forward user intent.
 2. View models coordinate use cases and expose immutable async state.
 3. Repositories define the domain-facing data contract.
 4. Services communicate with devices, persistence, and remote APIs.
 
-Dependencies point inward. Presentation code does not import concrete services; services do not know about widgets. `package:nativiq` supplies small primitives and does not dictate state management, routing, networking, or code generation.
+Dependencies point inward. Presentation code does not import concrete services; services do not know about widgets. `package:start_dart` supplies small primitives and does not dictate state management, routing, networking, or code generation.
 
 ## Error contract
 

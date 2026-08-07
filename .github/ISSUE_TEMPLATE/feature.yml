@@ -1,5 +1,5 @@
 name: Feature proposal
-description: Propose a focused improvement to Nativiq
+description: Propose a focused improvement to START.DART
 body:
   - type: textarea
     id: problem

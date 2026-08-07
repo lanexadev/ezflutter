@@ -9,14 +9,14 @@ required=(
   CLAUDE.md
   GEMINI.md
   .github/copilot-instructions.md
-  .cursor/rules/nativiq.mdc
+  .cursor/rules/start-dart.mdc
 )
 
 for file in "${required[@]}"; do
   [[ -s "$file" ]] || { echo "Missing agent adapter: $file" >&2; exit 1; }
 done
 
-for file in CLAUDE.md GEMINI.md .github/copilot-instructions.md .cursor/rules/nativiq.mdc; do
+for file in CLAUDE.md GEMINI.md .github/copilot-instructions.md .cursor/rules/start-dart.mdc; do
   grep -q 'AGENTS.md' "$file" || { echo "$file must route to AGENTS.md" >&2; exit 1; }
 done
 

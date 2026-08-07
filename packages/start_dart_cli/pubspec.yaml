@@ -1,0 +1,15 @@
+name: start_dart_cli
+description: Command-line toolkit for creating and evolving START.DART Flutter applications.
+version: 3.0.0
+repository: https://github.com/lucasschimmel/start-dart
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+executables:
+  startdart: startdart
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.0

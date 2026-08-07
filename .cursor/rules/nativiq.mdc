@@ -1,6 +1,0 @@
----
-description: Route Cursor to the canonical Nativiq agent contract
-alwaysApply: true
----
-
-Read `AGENTS.md` before making changes. Follow its progressive-loading route into `.agents/rules/` and `.agents/skills/`. Treat `AGENTS.md` as canonical; this adapter adds no separate doctrine.

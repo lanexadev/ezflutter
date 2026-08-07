@@ -1,6 +1,6 @@
 ---
 name: release
-description: Prepare and verify a Nativiq version release without publishing implicitly. Use for version bumps, changelogs, migration notes, release candidates, tags, CLI packaging, and release-readiness checks.
+description: Prepare and verify a START.DART version release without publishing implicitly. Use for version bumps, changelogs, migration notes, release candidates, tags, CLI packaging, and release-readiness checks.
 ---
 
 # Prepare a release

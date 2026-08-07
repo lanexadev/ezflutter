@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:nativiq/nativiq.dart';
+import 'package:start_dart/start_dart.dart';
 
 import '../domain/home_repository.dart';
 
