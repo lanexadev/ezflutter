@@ -112,7 +112,7 @@ final class TemplateWriter {
 Map<String, String> _applicationFiles(String name, String? frameworkPath) => {
   'pubspec.yaml': _pubspec(name, frameworkPath),
   'analysis_options.yaml':
-      "include: package:flutter_lints/flutter.yaml\n\nlinter:\n  rules:\n    - directives_ordering\n    - prefer_final_locals\n",
+      "include: package:flutter_lints/flutter.yaml\n\nlinter:\n  rules:\n    - prefer_final_locals\n",
   'AGENTS.md': _agents,
   '.agents/rules/architecture.md': _architectureRule,
   '.agents/rules/testing.md': _testingRule,
