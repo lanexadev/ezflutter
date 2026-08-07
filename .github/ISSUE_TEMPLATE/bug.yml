@@ -1,0 +1,28 @@
+name: Bug report
+description: Report a reproducible START.DART problem
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: START.DART, Flutter, and Dart versions
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options: [Android, iOS, CLI, Framework]
+    validations:
+      required: true

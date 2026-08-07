@@ -1,0 +1,4 @@
+interface:
+  display_name: "create-app"
+  short_description: "START.DART repository workflow for create-app"
+  default_prompt: "Use $create-app to complete this START.DART workflow safely."

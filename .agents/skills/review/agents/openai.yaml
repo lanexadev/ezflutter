@@ -1,0 +1,4 @@
+interface:
+  display_name: "review"
+  short_description: "START.DART repository workflow for review"
+  default_prompt: "Use $review to complete this START.DART workflow safely."

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/lucasschimmel/start-dart/discussions
+    about: Ask for help or discuss an idea before opening an actionable issue.
+  - name: Security vulnerability
+    url: https://github.com/lucasschimmel/start-dart/security/advisories/new
+    about: Report security vulnerabilities privately.

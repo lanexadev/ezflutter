@@ -2,64 +2,35 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    tags: ['v*.*.*']
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
 
 jobs:
-  build-android:
+  verify-and-package:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-
-      - run: flutter pub get
-      - run: dart run build_runner build --delete-conflicting-outputs
-      - run: flutter build apk --release --dart-define-from-file=config/prod.json
-      - run: flutter build appbundle --release --dart-define-from-file=config/prod.json
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: android-release
-          path: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/bundle/release/app-release.aab
-
-  build-ios:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-
-      - run: flutter pub get
-      - run: dart run build_runner build --delete-conflicting-outputs
-      - run: flutter build ios --release --no-codesign --dart-define-from-file=config/prod.json
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ios-release
-          path: build/ios/iphoneos/Runner.app
-
-  create-release:
-    needs: [build-android, build-ios]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: android-release
-          path: artifacts/android
-
+          cache: true
+      - run: dart pub get
+      - run: dart analyze --fatal-infos
+      - run: flutter test packages/start_dart
+      - run: dart test packages/start_dart_cli
+      - run: dart pub publish --dry-run
+        working-directory: packages/start_dart
+      - run: dart pub publish --dry-run
+        working-directory: packages/start_dart_cli
+      - run: tar -czf start-dart-${GITHUB_REF_NAME}.tar.gz packages/start_dart packages/start_dart_cli template AGENTS.md LICENSE README.md
       - uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
-          files: |
-            artifacts/android/**
+          files: start-dart-${{ github.ref_name }}.tar.gz

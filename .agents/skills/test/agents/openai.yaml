@@ -1,0 +1,4 @@
+interface:
+  display_name: "test"
+  short_description: "START.DART repository workflow for test"
+  default_prompt: "Use $test to complete this START.DART workflow safely."

@@ -1,0 +1,27 @@
+name: Feature proposal
+description: Propose a focused improvement to START.DART
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Describe the user problem, not only the desired implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Product surface
+      options: [CLI, Framework, Template, Agent workflow, Documentation]
+    validations:
+      required: true
