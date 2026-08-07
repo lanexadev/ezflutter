@@ -2,7 +2,7 @@
 
 A complete product catalog app built with **EzFlutter V2**, demonstrating the Ez* declarative page system, Riverpod state management, Freezed models, and all framework features.
 
-> This is a showcase/example project. The boilerplate framework is at [lanexadev/ezflutter](https://github.com/lanexadev/ezflutter).
+> This is a showcase/example project. The boilerplate framework is at [lucasschimmel/ezflutter](https://github.com/lucasschimmel/ezflutter).
 
 ## What This Demonstrates
 
