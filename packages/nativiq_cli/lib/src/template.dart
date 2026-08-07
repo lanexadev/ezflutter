@@ -192,13 +192,13 @@ const _app =
 const _environment =
     "enum AppEnvironment { development, staging, production }\n";
 String _environmentTest(String name) =>
-    "import 'package:flutter_test/flutter_test.dart';\nimport 'package:$name/core/config/app_environment.dart';\n\nvoid main() {\n  test('exposes all deployment environments', () {\n    expect(AppEnvironment.values, hasLength(3));\n  });\n}\n";
+    "import 'package:$name/core/config/app_environment.dart';\nimport 'package:flutter_test/flutter_test.dart';\n\nvoid main() {\n  test('exposes all deployment environments', () {\n    expect(AppEnvironment.values, hasLength(3));\n  });\n}\n";
 String _homeViewModelTest(String name) =>
-    "import 'package:flutter_test/flutter_test.dart';\nimport 'package:$name/features/home/data/in_memory_home_repository.dart';\nimport 'package:$name/features/home/presentation/home_view_model.dart';\n\nvoid main() {\n  test('loads the repository message', () async {\n    final viewModel = HomeViewModel(InMemoryHomeRepository());\n    await viewModel.load();\n    expect(viewModel.message, 'Home ready');\n  });\n}\n";
+    "import 'package:$name/features/home/data/in_memory_home_repository.dart';\nimport 'package:$name/features/home/presentation/home_view_model.dart';\nimport 'package:flutter_test/flutter_test.dart';\n\nvoid main() {\n  test('loads the repository message', () async {\n    final viewModel = HomeViewModel(InMemoryHomeRepository());\n    await viewModel.load();\n    expect(viewModel.message, 'Home ready');\n  });\n}\n";
 String _appTest(String name) =>
-    "import 'package:flutter_test/flutter_test.dart';\nimport 'package:$name/app/app.dart';\n\nvoid main() {\n  testWidgets('shows the home state', (tester) async {\n    await tester.pumpWidget(const App());\n    await tester.pumpAndSettle();\n    expect(find.text('Home ready'), findsOneWidget);\n  });\n}\n";
+    "import 'package:$name/app/app.dart';\nimport 'package:flutter_test/flutter_test.dart';\n\nvoid main() {\n  testWidgets('shows the home state', (tester) async {\n    await tester.pumpWidget(const App());\n    await tester.pumpAndSettle();\n    expect(find.text('Home ready'), findsOneWidget);\n  });\n}\n";
 String _integrationTest(String name) =>
-    "import 'package:flutter_test/flutter_test.dart';\nimport 'package:integration_test/integration_test.dart';\nimport 'package:$name/main_dev.dart' as app;\n\nvoid main() {\n  IntegrationTestWidgetsFlutterBinding.ensureInitialized();\n  testWidgets('launches the development application', (tester) async {\n    app.main();\n    await tester.pumpAndSettle();\n    expect(find.text('Home ready'), findsOneWidget);\n  });\n}\n";
+    "import 'package:$name/main_dev.dart' as app;\nimport 'package:flutter_test/flutter_test.dart';\nimport 'package:integration_test/integration_test.dart';\n\nvoid main() {\n  IntegrationTestWidgetsFlutterBinding.ensureInitialized();\n  testWidgets('launches the development application', (tester) async {\n    app.main();\n    await tester.pumpAndSettle();\n    expect(find.text('Home ready'), findsOneWidget);\n  });\n}\n";
 
 const _agents = '''# AI agent entry point
 
