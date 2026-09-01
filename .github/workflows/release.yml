@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
@@ -30,7 +30,7 @@ jobs:
       - run: dart pub publish --dry-run
         working-directory: packages/start_dart_cli
       - run: tar -czf start-dart-${GITHUB_REF_NAME}.tar.gz packages/start_dart packages/start_dart_cli template AGENTS.md LICENSE README.md
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           generate_release_notes: true
           files: start-dart-${{ github.ref_name }}.tar.gz
